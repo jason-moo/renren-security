@@ -1,5 +1,6 @@
 package io.renren.controller;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ public class SysPageController {
 	
 	@RequestMapping("sys/{url}.html")
 	public String page(@PathVariable("url") String url){
+		System.out.println(SecurityUtils.getSubject().isAuthenticated());
 		return "sys/" + url + ".html";
 	}
 }
